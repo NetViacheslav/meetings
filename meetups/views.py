@@ -1,8 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
 # Create your views here.
 
 def index(request):
-    return HttpResponse('re')
+    meetups = [
+        {
+            'title': 'A First Meetup',
+            'locations': 'Ostrava',
+            'slug': 'first-meetups'
+        },
+        {
+            'title': 'A Second Meetup',
+            'locations': 'Poruba',
+            'slug': 'second-meetups'
+        }
+    ]
+    return render(request, 'meetups/index.html', {
+        'show_meetups': True,
+        'meetups': meetups
+    })
