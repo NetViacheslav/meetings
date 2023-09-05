@@ -1,23 +1,23 @@
+{% extends 'meetups/base/base.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Meetups</title>
-    <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+  {% block title %}All Meetups{% endblock %}
+
+  {% block site_css %}
     <link rel="stylesheet" href="{% static 'meetups/styles/all_meetups.css' %}">
-</head>
-<body>
-    <header id="main-header">
-        <nav><a href="/meetups" id="main-logo">DjangoMeetups</a></nav>
-        <h1>We got meetups coming up!</h1>
-        <p>Find the one that best suits your needs!</p>
-    </header>
-    <main>
-        <section>
+  {% endblock %}
+
+  {% block main_heading %}
+    We got meetups coming up!
+  {% endblock %}
+
+  {% block header_content %}
+    <p>Find the one that best suits your needs!</p>
+  {% endblock %}
+
+  {% block body %}
+    <section>
             <h2>Upcoming Meetups</h2>
             <ol>
                 {% for meetup_item in meetups %}
@@ -33,13 +33,11 @@
                                 </div>
                             </div>
                             <div class="meetup-actions">
-                                <a href="" class="btn">More Details</a>
+                                <a href="{% url 'meetup-detail' meetup_item.slug %}" class="btn">More Details</a>
                             </div>
                         </article>
                     </li>
                 {% endfor %}
             </ol>
         </section>
-    </main>
-</body>
-</html>
+  {% endblock %}
